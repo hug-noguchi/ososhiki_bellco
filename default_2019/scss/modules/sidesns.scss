@@ -1,0 +1,18 @@
+.side-sns {
+  width: 130px;
+  height: 100vw;
+  background-color: #f8f8fb;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  >a {
+    width: 100%;
+    display: block;
+    text-align: center;
+    &:first-child {
+      margin-bottom: 60px;
+      margin-top: calc(50vh - 73px);
+    }
+  }
+}

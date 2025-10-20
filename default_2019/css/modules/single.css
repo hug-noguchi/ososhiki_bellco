@@ -1,0 +1,835 @@
+@charset "UTF-8";
+.single-main .sidebar {
+  width: 380px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  background-color: #f8f8fb;
+  padding: 60px 3vw;
+}
+
+@media screen and (max-width: 1200px) {
+  .single-main .sidebar {
+    width: 30vw;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .single-main .sidebar {
+    display: none;
+  }
+}
+
+.single-main .sidebar .manner {
+  color: #5a477b;
+}
+
+.single-main .sidebar .knowledge {
+  color: #2f4d26;
+}
+
+.single-main .sidebar .after {
+  color: #5b4428;
+}
+
+.single-main .sidebar .ready {
+  color: #3f445e;
+}
+
+.single-main .sidebar .column {
+  color: #1e1e1e;
+}
+
+.single-main .sidebar .title {
+  font-size: 2.1rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+  margin-top: 0;
+}
+
+.single-main .sidebar__nav {
+  padding: 0;
+}
+
+.single-main .sidebar__nav > li {
+  list-style-type: none;
+  position: relative;
+}
+
+.single-main .sidebar__nav > li > span {
+  font-size: 1.6rem;
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+  font-weight: bold;
+  color: #96969e;
+  display: block;
+  margin-bottom: 25px;
+  cursor: pointer;
+}
+
+.single-main .sidebar__nav > li > span::before {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #96969e;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.single-main .sidebar__nav > li > span::after {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-right: 2px #fff solid;
+  border-top: 2px #fff solid;
+  -webkit-transform: rotate(135deg);
+      -ms-transform: rotate(135deg);
+          transform: rotate(135deg);
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  -webkit-transition: all .25s ease-out;
+  -o-transition: all .25s ease-out;
+  transition: all .25s ease-out;
+}
+
+.single-main .sidebar__nav > li > .open::after {
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  top: 9px;
+}
+
+.single-main .sidebar__navchild {
+  padding: 0;
+  display: none;
+}
+
+.single-main .sidebar__navchild > li {
+  list-style-type: none;
+  margin-bottom: 9px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.single-main .sidebar__navchild > li:nth-child(n+2) > a .info .info__new {
+  display: none;
+}
+
+.single-main .sidebar__navchild > li > a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-decoration: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.single-main .sidebar__navchild > li > a .thumbnail {
+  width: 30%;
+  height: 50px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.single-main .sidebar__navchild > li > a .info {
+  width: 65%;
+}
+
+.single-main .sidebar__navchild > li > a .info__new {
+  font-weight: 600;
+  color: #c30404;
+  font-size: 1.4rem;
+  position: absolute;
+  top: -7px;
+  left: 35%;
+}
+
+.single-main .sidebar__navchild > li > a .info__title {
+  font-size: 1.6rem;
+  font-weight: 400;
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+  color: #1e1e1e;
+  margin: 0;
+  line-height: 1;
+}
+
+.single-main .article {
+  width: calc(100vw - 130px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-left: 130px;
+}
+
+@media screen and (max-width: 992px) {
+  .single-main .article {
+    margin-left: 0;
+    width: 100vw;
+  }
+}
+
+.single-main .article__container {
+  width: 100%;
+}
+
+.single-main .article__content {
+  padding: 60px 6vw;
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+}
+
+@media screen and (max-width: 992px) {
+  .single-main .article__content {
+    padding: 40px 20px;
+  }
+}
+
+.single-main .article__content table {
+  border-color: #969696;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.single-main .article__content table th, .single-main .article__content table td {
+  padding: 2px;
+}
+
+.single-main .article__content img {
+  height: auto;
+}
+
+.single-main .article__content p,
+.single-main .article__content strong {
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+}
+
+.single-main .article__content h5 {
+  font-size: 2.8rem;
+  font-family: "Yu Mincho", "YuMincho", serif;
+  font-weight: 400;
+}
+
+.single-main .article__content h5 strong {
+  font-family: "Yu Mincho", "YuMincho", serif;
+  font-weight: 400;
+}
+
+.single-main .article__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  position: relative;
+}
+
+@media screen and (max-width: 1200px) {
+  .single-main .article__info {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
+.single-main .article__info .thumbnail {
+  width: 45%;
+  height: 335px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 1200px) {
+  .single-main .article__info .thumbnail {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .single-main .article__info .thumbnail {
+    height: 50vw;
+  }
+}
+
+.single-main .article__info--text {
+  width: 55%;
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+  font-size: 1.8rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .single-main .article__info--text {
+    -webkit-box-ordinal-group: 1;
+        -ms-flex-order: 0;
+            order: 0;
+    width: 100%;
+  }
+}
+
+.single-main .article__info--text .contents {
+  padding: 0 20px;
+}
+
+.single-main .article__info--text .contents p {
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+  font-size: 1.6rem;
+}
+
+.single-main .article__info .title {
+  padding-left: 80px;
+  color: #646482;
+  font-size: 2.8rem;
+  font-weight: 400;
+  margin-top: 20px;
+  padding-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 30px;
+  padding-right: 20px;
+  border-bottom: 1px solid #96969e;
+}
+
+@media screen and (max-width: 1200px) {
+  .single-main .article__info .title {
+    padding-left: 130px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .single-main .article__info .title {
+    font-size: 2.1rem;
+    margin-top: 13px;
+  }
+}
+
+.single-main .article__info .category {
+  padding-left: 80px;
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 1200px) {
+  .single-main .article__info .category {
+    padding-left: 130px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .single-main .article__info .category {
+    font-size: 1.4rem;
+    margin-bottom: 0;
+  }
+}
+
+.single-main .article__info .custom-type-name.manner {
+  background-color: #5a477b;
+}
+
+.single-main .article__info .custom-type-name.knowledge {
+  background-color: #2f4d26;
+}
+
+.single-main .article__info .custom-type-name.after {
+  background-color: #5b4428;
+}
+
+.single-main .article__info .custom-type-name.after p {
+  font-size: 1.4rem;
+}
+
+.single-main .article__info .custom-type-name.ready {
+  background-color: #3f445e;
+}
+
+.single-main .article__info .custom-type-name.column {
+  background-color: #1e1e1e;
+}
+
+.single-main .article__info .category.manner {
+  color: #5a477b;
+}
+
+.single-main .article__info .category.knowledge {
+  color: #2f4d26;
+}
+
+.single-main .article__info .category.after {
+  color: #5b4428;
+}
+
+.single-main .article__info .category.ready {
+  color: #3f445e;
+}
+
+.single-main .article__info .category.column {
+  color: #1e1e1e;
+}
+
+.single-main .article__info .custom-type-name {
+  width: 138px;
+  height: 138px;
+  border-radius: 50%;
+  padding: 43px 31px;
+  position: absolute;
+  top: 0;
+  left: calc(45% - 69px);
+  text-align: center;
+}
+
+@media screen and (max-width: 1200px) {
+  .single-main .article__info .custom-type-name {
+    width: 100px;
+    height: 100px;
+    padding: 27px 10px;
+    left: 20px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .single-main .article__info .custom-type-name {
+    top: 18px;
+  }
+}
+
+.single-main .article__info .custom-type-name p {
+  color: #fff;
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.related-post {
+  position: relative;
+}
+
+.related-post::after {
+  content: "";
+  display: block;
+  height: 62px;
+  width: 380px;
+  background-color: #f8f8fb;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+@media screen and (max-width: 1200px) {
+  .related-post::after {
+    width: 30vw;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .related-post::after {
+    display: none;
+  }
+}
+
+.related-post__container {
+  background-color: #f0f0f8;
+  padding: 25px 0;
+  position: relative;
+}
+
+@media screen and (max-width: 992px) {
+  .related-post__container {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .related-post__container .wrapper {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+.related-post__article-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (max-width: 992px) {
+  .related-post__article-container {
+    display: block;
+  }
+}
+
+.related-post__article-container > article {
+  width: 24%;
+  margin-right: 1.3333%;
+}
+
+.related-post__article-container > article:last-child {
+  margin-right: 0;
+}
+
+@media screen and (max-width: 992px) {
+  .related-post__article-container > article {
+    width: 100vw;
+    margin-right: 0;
+  }
+}
+
+.related-post__article-container > article > a {
+  text-decoration: none;
+}
+
+.related-post__article-container > article > a:hover .read-more::before {
+  width: 42%;
+}
+
+@media screen and (max-width: 768px) {
+  .related-post__article-container > article > a:hover .read-more::before {
+    left: calc(84px - 70vw);
+  }
+}
+
+.related-post__article-container > article > a:hover .read-more::after {
+  left: 35%;
+  opacity: 1;
+}
+
+.related-post__article-container > article > a:hover .read-more > span {
+  padding-left: 12px;
+}
+
+.related-post__article-container > article .flex {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+@media screen and (max-width: 992px) {
+  .related-post__article-container > article .flex {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-bottom: 0;
+    border-bottom: 1px solid #fff;
+  }
+}
+
+.related-post__article-container > article .flex .thumbnail {
+  width: 35%;
+  height: 5vw;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-right: 12px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+@media screen and (max-width: 992px) {
+  .related-post__article-container > article .flex .thumbnail {
+    height: 17vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .related-post__article-container > article .flex .thumbnail {
+    height: 25vw;
+  }
+}
+
+.related-post__article-container > article .flex .info .post-type-name {
+  font-size: 1.2rem;
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+  font-weight: bold;
+  color: #1e1e1e;
+  margin: 0;
+}
+
+.related-post__article-container > article .flex .info .manner {
+  color: #5a477b;
+}
+
+.related-post__article-container > article .flex .info .knowledge {
+  color: #2f4d26;
+}
+
+.related-post__article-container > article .flex .info .after {
+  color: #5b4428;
+}
+
+.related-post__article-container > article .flex .info .ready {
+  color: #3f445e;
+}
+
+.related-post__article-container > article .flex .info .column {
+  color: #1e1e1e;
+}
+
+.related-post__article-container > article .flex .info .title {
+  font-size: 1.6rem;
+  color: #1e1e1e;
+  line-height: 1;
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+.related-post__article-container > article .read-more {
+  position: relative;
+}
+
+@media screen and (max-width: 992px) {
+  .related-post__article-container > article .read-more {
+    display: none;
+  }
+}
+
+.related-post__article-container > article .read-more::before {
+  content: "";
+  display: block;
+  width: 40%;
+  height: 1px;
+  background-color: #dcdcdc;
+  position: absolute;
+  left: 0;
+  top: 28px;
+  -webkit-transition: all .25s ease-out;
+  -o-transition: all .25s ease-out;
+  transition: all .25s ease-out;
+}
+
+@media screen and (max-width: 768px) {
+  .related-post__article-container > article .read-more::before {
+    width: 70vw;
+    left: calc(72px - 70vw);
+  }
+}
+
+.related-post__article-container > article .read-more::after {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 1px;
+  background-color: #dcdcdc;
+  -webkit-transform: rotate(-150deg);
+      -ms-transform: rotate(-150deg);
+          transform: rotate(-150deg);
+  position: absolute;
+  top: 23px;
+  left: 34%;
+  opacity: 0;
+  -webkit-transition: all .25s ease-out;
+  -o-transition: all .25s ease-out;
+  transition: all .25s ease-out;
+}
+
+.related-post__article-container > article .read-more > span {
+  display: block;
+  width: 80%;
+  text-align: center;
+  margin-left: auto;
+  color: #1e1e1e;
+  font-size: 1.4rem;
+  border: 1px solid #96969e;
+  padding: 16px 0;
+  text-decoration: none;
+  -webkit-transition: all .25s ease-out;
+  -o-transition: all .25s ease-out;
+  transition: all .25s ease-out;
+}
+
+.single-category {
+  padding-top: 40px;
+  background-color: #fff;
+}
+
+.single-category__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+@media screen and (max-width: 992px) {
+  .single-category__container {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
+.single-category__container .preparation {
+  background-image: url(../images/category_preparation.jpg);
+}
+
+.single-category__container .manner {
+  background-image: url(../images/category_manner.jpg);
+}
+
+.single-category__container .knowledge {
+  background-image: url(../images/category_knowledge.jpg);
+}
+
+.single-category__container .after {
+  background-image: url(../images/category_after.jpg);
+}
+
+.single-category__block {
+  width: 25vw;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 30px 20px;
+}
+
+@media screen and (max-width: 992px) {
+  .single-category__block {
+    width: 50vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .single-category__block {
+    width: 100vw;
+  }
+}
+
+.single-category__block--inner {
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  height: 260px;
+  margin-top: -18px;
+}
+
+.single-category__block--inner .title {
+  text-align: center;
+  font-weight: 400;
+  font-size: 2.1rem;
+  padding-top: 65px;
+}
+
+.single-category__block--inner ul {
+  margin: 0;
+  padding: 0 2vw;
+}
+
+@media screen and (max-width: 1200px) {
+  .single-category__block--inner ul {
+    padding: 0 1vw;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .single-category__block--inner ul {
+    padding: 0 3vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .single-category__block--inner ul {
+    padding: 0 8vw;
+  }
+}
+
+.single-category__block--inner ul > li {
+  list-style-type: none;
+}
+
+.single-category__block--inner ul > li > a {
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+  font-size: 1.5rem;
+  color: #1e1e1e;
+  text-decoration: none;
+  display: inline-block;
+  width: 145px;
+  -webkit-transition: all .25s ease-out;
+  -o-transition: all .25s ease-out;
+  transition: all .25s ease-out;
+}
+
+@media screen and (max-width: 1200px) {
+  .single-category__block--inner ul > li > a {
+    font-size: 1.4rem;
+    width: 135px;
+  }
+}
+
+.single-category__block--inner ul > li > a:hover {
+  width: 157px;
+}
+
+.single-category__block--inner ul .ending-note img {
+  vertical-align: top;
+  margin-top: 10px;
+}
+
+.sp-sidelist {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .sp-sidelist {
+    display: block;
+  }
+  .sp-sidelist .title {
+    text-align: center;
+    font-size: 2.1rem;
+  }
+  .sp-sidelist .sidebar__nav > li > span {
+    text-align: center;
+    border-bottom: 1px solid #dcdcdc;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+  .sp-sidelist .sidebar__nav > li > span::before {
+    right: 30vw;
+  }
+  .sp-sidelist .sidebar__nav > li > span::after {
+    right: calc(30vw + 8px);
+  }
+  .sp-sidelist .sidebar__navchild > li {
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+    border-bottom: none;
+  }
+  .sp-sidelist .sidebar__navchild > li img {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .sp-sidelist .sidebar__nav > li > span::before {
+    right: 19vw;
+  }
+  .sp-sidelist .sidebar__nav > li > span::after {
+    right: calc(19vw + 8px);
+  }
+}
+
+.ready-sidelist .sidebar__nav > li > span::before {
+  right: 8vw;
+}
+
+.ready-sidelist .sidebar__nav > li > span::after {
+  right: calc(8vw + 8px);
+}
+
+.no-article {
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  padding: 50px 0;
+}

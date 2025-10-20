@@ -1,0 +1,24 @@
+.side-sns {
+  width: 130px;
+  background-color: #f8f8fb;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@media screen and (max-width: 992px) {
+  .side-sns {
+    display: none;
+  }
+}
+
+.side-sns > a {
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+
+.side-sns > a:first-child {
+  margin-bottom: 60px;
+  margin-top: calc(50vh - 73px);
+}

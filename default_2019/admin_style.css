@@ -1,0 +1,37 @@
+/* */
+
+
+
+
+/* CP:contents_top preview OFF */
+.post-type-contents_top .row-actions .view,
+.post-type-contents_top #minor-publishing-actions,
+.post-type-contents_top #minor-publishing,
+.post-type-contents_top #message > p a,
+.post-type-contents_top #ready_category-adder,
+.post-type-contents_top #knowledge_category-adder,
+.post-type-contents_top #manner_category-adder,
+.post-type-contents_top #after_category-adder{display:none;}
+
+
+/* よく使うもの */
+.category-tabs > .hide-if-no-js{display:none;}
+
+
+/* wp全体 */
+#wp-admin-bar-wp-logo,
+#wp-admin-bar-comments,
+#wp-admin-bar-new-content{display:none;}
+
+
+.mce-widget.mce-btn#mceu_116, /* 番号なしリスト */
+.mce-widget.mce-btn#mceu_117, /* 番号ありリスト */
+.mce-widget.mce-btn#mceu_125, /* 続きを読むリンク */
+.mce-widget.mce-btn#mceu_135, /* インデントつける */
+.mce-widget.mce-btn#mceu_136, /* インデント消す */
+.mce-menu-item.mce-menu-item-normal.mce-stack-layout-item#mceu_174,/* 見出し1 */
+.mce-menu-item.mce-menu-item-normal.mce-stack-layout-item#mceu_175,/* 見出し2 */
+.mce-menu-item.mce-menu-item-normal.mce-stack-layout-item#mceu_176,/* 見出し3 */
+.mce-menu-item.mce-menu-item-normal.mce-stack-layout-item#mceu_177,/* 見出し4 */
+.mce-menu-item.mce-menu-item-normal.mce-stack-layout-item#mceu_179/* 見出し6 */
+{display:none;}

@@ -1,0 +1,129 @@
+@charset "UTF-8";
+.footer {
+  text-align: center;
+  padding-top: 135px;
+  background-color: #fff;
+  position: relative;
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    padding-top: 50px;
+  }
+}
+
+.footer .to-top {
+  width: 46px;
+  height: 46px;
+  background-color: #1e1e1e;
+  border-radius: 50%;
+  position: absolute;
+  top: 140px;
+  right: 10vw;
+  cursor: pointer;
+}
+
+.footer .to-top > a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.footer .to-top > a::after {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-right: 2px #fff solid;
+  border-top: 2px #fff solid;
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  position: absolute;
+  top: 19px;
+  right: 16px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .footer .to-top {
+    display: none;
+  }
+}
+
+.footer__sns {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .footer__sns {
+    display: block;
+  }
+  .footer__sns > a:first-child {
+    margin-right: 25px;
+  }
+}
+
+.footer__nav {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .footer__nav {
+    display: none;
+  }
+}
+
+.footer__nav > li {
+  display: inline-block;
+  list-style-type: none;
+}
+
+.footer__nav > li > a {
+  font-size: 1.2rem;
+  color: #1e1e1e;
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+  text-decoration: none;
+}
+
+.footer__nav > li > a:hover {
+  text-decoration: underline;
+}
+
+.footer__nav > li > a::after {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 10px;
+  background-color: #848484;
+  margin-left: 8px;
+}
+
+.footer__nav > li:first-child::before {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 10px;
+  background-color: #848484;
+  margin-right: 8px;
+}
+
+.footer .copyright {
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+
+@media screen and (max-width: 768px) {
+  .footer .copyright {
+    margin-bottom: 40px;
+  }
+}
+
+.footer .copyright small {
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+  color: #848484;
+  font-size: 1.2rem;
+}

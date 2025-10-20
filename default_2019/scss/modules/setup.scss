@@ -1,0 +1,13 @@
+$breakpoints: ( 'sm': 'screen and (max-width: 480px)',
+'md': 'screen and (max-width: 768px)',
+'menu': 'screen and (max-width: 834px)',
+'lg': 'screen and (max-width: 992px)',
+'xl': 'screen and (max-width: 1200px)',
+) !default;
+
+@mixin mq($breakpoint: md) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}
+$yugothic: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;

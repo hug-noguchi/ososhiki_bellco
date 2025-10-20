@@ -1,0 +1,229 @@
+@charset "UTF-8";
+.search__container {
+  padding: 60px 6vw;
+  margin-left: 130px;
+}
+
+@media screen and (max-width: 992px) {
+  .search__container {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .search__container {
+    padding: 60px 0;
+  }
+}
+
+.search__title {
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+  font-size: 1.8rem;
+  color: #1e1e1e;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 768px) {
+  .search__title {
+    margin: 0 20px 20px 20px;
+  }
+}
+
+.search__title span {
+  font-size: 3rem;
+  color: #96969e;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .search__block {
+    border-bottom: 1px solid #dcdcdc;
+  }
+  .search__block:first-child {
+    border-top: 1px solid #dcdcdc;
+  }
+}
+
+.search__block > a {
+  text-decoration: none;
+}
+
+.search__block > a:hover .read-more::before {
+  width: calc(100% - 154px);
+}
+
+@media screen and (max-width: 768px) {
+  .search__block > a:hover .read-more::before {
+    left: calc(100% - 144px);
+  }
+}
+
+.search__block > a:hover .read-more::after {
+  left: calc(100% - 173px);
+  opacity: 1;
+}
+
+.search__block > a:hover .read-more > span {
+  padding-left: 12px;
+}
+
+.search__block > a .read-more {
+  position: relative;
+}
+
+@media screen and (max-width: 768px) {
+  .search__block > a .read-more {
+    display: none;
+  }
+}
+
+.search__block > a .read-more::before {
+  content: "";
+  display: block;
+  width: calc(100% - 166px);
+  height: 1px;
+  background-color: #dcdcdc;
+  position: absolute;
+  left: 0;
+  top: 28px;
+  -webkit-transition: all .25s ease-out;
+  -o-transition: all .25s ease-out;
+  transition: all .25s ease-out;
+}
+
+@media screen and (max-width: 768px) {
+  .search__block > a .read-more::before {
+    width: 70vw;
+    left: calc(72px - 70vw);
+  }
+}
+
+.search__block > a .read-more::after {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 1px;
+  background-color: #dcdcdc;
+  -webkit-transform: rotate(-150deg);
+      -ms-transform: rotate(-150deg);
+          transform: rotate(-150deg);
+  position: absolute;
+  top: 23px;
+  left: calc(100% - 185px);
+  opacity: 0;
+  -webkit-transition: all .25s ease-out;
+  -o-transition: all .25s ease-out;
+  transition: all .25s ease-out;
+}
+
+.search__block > a .read-more > span {
+  display: block;
+  width: 234px;
+  text-align: center;
+  margin-left: auto;
+  color: #1e1e1e;
+  font-size: 1.4rem;
+  border: 1px solid #96969e;
+  padding: 16px 0;
+  text-decoration: none;
+  -webkit-transition: all .25s ease-out;
+  -o-transition: all .25s ease-out;
+  transition: all .25s ease-out;
+}
+
+.search__block .thumbnail {
+  width: 165px;
+  height: 110px;
+  margin-right: 25px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .search__block .thumbnail {
+    width: 122px;
+    height: 115px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .search__block .info {
+    padding-right: 20px;
+  }
+}
+
+.search__block .info .title {
+  font-size: 2.1rem;
+  font-weight: 400;
+  color: #1e1e1e;
+}
+
+.search__block .info .excerpt {
+  color: #1e1e1e;
+  font-size: 1.4rem;
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+}
+
+.pagination {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.pagination .next,
+.pagination .prev {
+  display: none;
+}
+
+.pagination > span,
+.pagination > a {
+  padding: 8px 10px;
+  margin: 0;
+  position: relative;
+  color: #003595;
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+  text-decoration: none;
+}
+
+.pagination > span:hover,
+.pagination > a:hover {
+  background-color: #f0f0fe;
+}
+
+.pagination > span::before,
+.pagination > a::before {
+  content: "";
+  width: 1px;
+  height: 32px;
+  display: inline-block;
+  background-color: #dcdcdc;
+  margin-right: 2px;
+  position: absolute;
+  top: 0;
+  left: -3px;
+}
+
+.pagination > span:last-child::after,
+.pagination > a:last-child::after {
+  content: "";
+  width: 1px;
+  height: 32px;
+  display: inline-block;
+  background-color: #dcdcdc;
+  margin-right: 2px;
+  position: absolute;
+  top: 0;
+  right: -5px;
+}
+
+.pagination > .current {
+  background-color: #f0f0fe;
+  border-radius: 2px;
+}
+
+.bottom-pagination {
+  margin-top: 50px;
+}

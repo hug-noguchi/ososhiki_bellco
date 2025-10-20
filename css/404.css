@@ -1,0 +1,33 @@
+/**************************************************
+
+	　404
+
+**************************************************/
+
+
+@media screen and (max-width: 360px) {
+	
+	#main{}
+	#main > h2{width:100%;height:30px;background-color:#5a477b;font-weight:bold;}
+	#main > h2 span{display:block;height:30px;margin:0 auto;color:#ffffff;font-size:18px;padding:0 10px;line-height:30px;}
+}
+
+
+
+@media screen and (min-width: 361px) and (max-width: 768px){
+	
+	#main > h2{width:100%;height:40px;background-color:#5a477b;font-weight:bold;}
+	#main > h2 span{display:block;height:40px;margin:0 auto;color:#ffffff;font-size:20px;padding:0 30px;line-height:40px;}
+}
+
+
+@media screen and (min-width: 769px){
+	
+	#main > h2{width:100%;height:40px;background-color:#5a477b;font-weight:bold;}
+	#main > h2 span{display:block;width:960px;height:40px;margin:0 auto;color:#ffffff;font-size:20px;padding:0 30px;line-height:40px;}
+	#main .content{width:1024px;margin:0 auto;box-sizing:border-box;padding:60px 30px;}
+}
+
+
+
+
