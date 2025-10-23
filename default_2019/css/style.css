@@ -2096,6 +2096,20 @@ category-article
   font-weight: 400;
 }
 
+.single-main .article__content h2 {
+  padding-left: 15px;
+  border-left: 4px solid #4a90e2;
+  line-height: 1.6;
+  margin: 30px 0 20px;
+}
+
+.single-main .article__content h3 {
+  padding-left: 15px;
+  border-left: 4px solid #cccccc;
+  line-height: 1.6;
+  margin: 25px 0 15px;
+}
+
 .single-main .article__info {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2453,6 +2467,10 @@ category-article
 
 .related-post__article-container > article .flex .info .column {
   color: #1e1e1e;
+}
+
+.related-post__article-container > article .flex .info .kazokusotokushu {
+  color: #8c5e5e;
 }
 
 .related-post__article-container > article .flex .info .title {
