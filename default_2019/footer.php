@@ -8,10 +8,10 @@
             <?php get_template_part('parts/sns'); ?>
           </div>
           <ul class="footer__nav">
-              <li><a href="https://www.bellco.co.jp/regist/">特定商取引に基づく表記</a></li>
-              <li><a href="https://www.bellco.co.jp/policy/">プライバシーポリシー</a></li>
-              <li><a href="https://www.bellco.co.jp/browser/">推奨環境</a></li>
-              <li><a href="https://www.bellco.co.jp/sitemap/">サイトマップ</a></li>
+              <li><a href="https://www.bellco.co.jp/regist/" target="_blank">特定商取引に基づく表記</a></li>
+              <li><a href="https://www.bellco.co.jp/policy/" target="_blank">プライバシーポリシー</a></li>
+              <li><a href="https://www.bellco.co.jp/browser/" target="_blank">推奨環境</a></li>
+              <li><a href="https://www.bellco.co.jp/sitemap/" target="_blank">サイトマップ</a></li>
           </ul>
           <p class="copyright"><small>Copyright©2019 BELLCO Co, ltd All Rights Reserved.</small></p>
         </div>
