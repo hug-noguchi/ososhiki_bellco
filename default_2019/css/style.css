@@ -1165,6 +1165,10 @@ top-article
   color: #1e1e1e;
 }
 
+.top-article .article__info .kazokusotokushu {
+  color: #8c5e5e;
+}
+
 .top-article .article__info .title {
   font-size: 2.2rem;
   font-weight: 400;
@@ -1390,6 +1394,10 @@ pickup
   color: #1e1e1e;
 }
 
+.pickup__article--infos .kazokusotokushu {
+  color: #8c5e5e;
+}
+
 .pickup__article--infos .title {
   font-size: 2.1rem;
   font-weight: 400;
@@ -1580,6 +1588,11 @@ category-article
 .category-article__left .after,
 .category-article__right .after {
   background-image: url(../images/category_after.jpg);
+}
+
+.category-article__left .kazokusotokushu,
+.category-article__right .kazokusotokushu {
+  background-image: url(../images/category_kazokusotokushu.jpg);
 }
 
 .category-article__left .title,
