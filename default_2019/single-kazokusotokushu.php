@@ -20,7 +20,7 @@
                 <?php the_field('contents'); ?>
             </div>
         </div>
-        <?php get_template_part('parts/sidelist_knowledge'); ?>
+        <?php get_template_part('parts/sidelist_kazokusotokushu'); ?>
     </article>
     <?php endwhile; endif; ?>
     <section id="related-post" class="related-post">
@@ -111,96 +111,79 @@
     </section>
 
     <section id="sp-sidelist" class="sp-sidelist">
-        <p class="title <?php echo esc_html(get_post_type_object(get_post_type())->name); ?>"><?php echo esc_html(get_post_type_object(get_post_type())->label); ?></p>
-        <ul class="sidebar__nav">
-      <li>
-        <span>お葬式の種類</span>
-        <ul class="sidebar__navchild">
-<?php
-$args = array(
-'post_type' => 'kazokusotokushu', //投稿タイプ名
-'posts_per_page' => 10, //出力する記事の数
-'tax_query' => array(
-array(
-'taxonomy' => 'kazokusotokushu_category', //タクソノミー名
-'field' => 'slug',
-'terms' => 'お葬式の種類' //タームのスラッグ
-)
-)
-);
-$domestic_post = get_posts($args);
-if($domestic_post) : foreach($domestic_post as $post) : setup_postdata( $post ); ?>
-          <li><a href="<?php the_permalink();?>">
-            <div class="info">
-              <p class="info__title"><?php the_title(); ?><img src="<?php echo get_template_directory_uri(); ?>/images/svg/arrow.svg" alt="" width="48" height="7"></p>
-            </div>
-          </a></li>
-<?php endforeach; ?>
-<?php else : ?>
-<li>表示する記事がありません。</li>
-<?php endif;
-wp_reset_postdata(); ?>
-        </ul>
-      </li>
-      <li>
-        <span>お葬式用語</span>
-        <ul class="sidebar__navchild">
-<?php
-$args = array(
-'post_type' => 'kazokusotokushu', //投稿タイプ名
-'posts_per_page' => 10, //出力する記事の数
-'tax_query' => array(
-array(
-'taxonomy' => 'kazokusotokushu_category', //タクソノミー名
-'field' => 'slug',
-'terms' => 'お葬式用語' //タームのスラッグ
-)
-)
-);
-$domestic_post = get_posts($args);
-if($domestic_post) : foreach($domestic_post as $post) : setup_postdata( $post ); ?>
-          <li><a href="<?php the_permalink();?>">
-            <div class="info">
-              <p class="info__title"><?php the_title(); ?><img src="<?php echo get_template_directory_uri(); ?>/images/svg/arrow.svg" alt="" width="48" height="7"></p>
-            </div>
-          </a></li>
-<?php endforeach; ?>
-<?php else : ?>
-<li>表示する記事がありません。</li>
-<?php endif;
-wp_reset_postdata(); ?>
-        </ul>
-      </li>
-      <li>
-        <span>宗教と宗派</span>
-        <ul class="sidebar__navchild">
-<?php
-$args = array(
-'post_type' => 'kazokusotokushu', //投稿タイプ名
-'posts_per_page' => 10, //出力する記事の数
-'tax_query' => array(
-array(
-'taxonomy' => 'kazokusotokushu_category', //タクソノミー名
-'field' => 'slug',
-'terms' => '宗教と宗派' //タームのスラッグ
-)
-)
-);
-$domestic_post = get_posts($args);
-if($domestic_post) : foreach($domestic_post as $post) : setup_postdata( $post ); ?>
-          <li><a href="<?php the_permalink();?>">
-            <div class="info">
-              <p class="info__title"><?php the_title(); ?><img src="<?php echo get_template_directory_uri(); ?>/images/svg/arrow.svg" alt="" width="48" height="7"></p>
-            </div>
-          </a></li>
-<?php endforeach; ?>
-<?php else : ?>
-<li>表示する記事がありません。</li>
-<?php endif;
-wp_reset_postdata(); ?>
-        </ul>
-      </li>
-  </ul>
+      <p class="title <?php echo esc_html(get_post_type_object(get_post_type())->name); ?>"><?php echo esc_html(get_post_type_object(get_post_type())->label); ?></p>
+      <ul class="sidebar__nav">
+        <li>
+          <span>家族葬について</span>
+          <ul class="sidebar__navchild">
+            <?php
+            $args = array(
+            'post_type' => 'kazokusotokushu',
+            'posts_per_page' => -1,
+            'tax_query' => array(
+            array(
+            'taxonomy' => 'kazokusotokushu_category',
+            'field' => 'slug',
+            'terms' => '家族葬について'
+            )
+            )
+            );
+            $domestic_post = get_posts($args);
+            if($domestic_post) : foreach($domestic_post as $post) : setup_postdata( $post ); ?>
+
+              <li>
+                <a href="<?php the_permalink(); ?>">
+                  <div class="thumbnail" style="background-image: url(<?php the_field('main_image'); ?>);"></div>
+                  <div class="info">
+                    <span class="info__new">New!</span>
+                    <p class="info__title"><?php the_title(); ?></p>
+                  </div>
+                </a>
+              </li>
+
+            <?php endforeach; ?>
+            <?php else : ?>
+            <li>表示する記事がありません。</li>
+            <?php endif;
+            wp_reset_postdata(); ?>
+          </ul>
+        </li>
+        <li>
+          <span>家族葬費用</span>
+          <ul class="sidebar__navchild">
+            <?php
+            $args = array(
+            'post_type' => 'kazokusotokushu',
+            'posts_per_page' => -1,
+            'tax_query' => array(
+            array(
+            'taxonomy' => 'kazokusotokushu_category',
+            'field' => 'slug',
+            'terms' => '家族葬費用'
+            )
+            )
+            );
+            $domestic_post = get_posts($args);
+            if($domestic_post) : foreach($domestic_post as $post) : setup_postdata( $post ); ?>
+
+              <li>
+                <a href="<?php the_permalink(); ?>">
+                  <div class="thumbnail" style="background-image: url(<?php the_field('main_image'); ?>);"></div>
+                  <div class="info">
+                    <span class="info__new">New!</span>
+                    <p class="info__title"><?php the_title(); ?></p>
+                  </div>
+                </a>
+              </li>
+
+            <?php endforeach; ?>
+            <?php else : ?>
+            <li>表示する記事がありません。</li>
+            <?php endif;
+            wp_reset_postdata(); ?>
+          </ul>
+        </li>
+      </ul>
     </section>
     <?php get_template_part('parts/categoryarticle'); ?>
 </main>
