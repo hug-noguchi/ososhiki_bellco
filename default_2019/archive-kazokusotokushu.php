@@ -597,8 +597,12 @@
         if ($wp_query->have_posts()) : while ($wp_query->have_posts()) : $wp_query->the_post();
           $obj = get_post_type_object($post->post_type); //投稿タイプ情報を取得
         ?>
-        <div class="kazokusotokushu_item">
-          <div class="thumbnail" style="background-image: url(<?php the_field('main_image'); ?>);"></div>
+          <div class="kazokusotokushu_item">
+            <?php
+            $thumb = get_field('main_image');
+            $noimage = get_template_directory_uri() . '/images/noimage.png';
+            ?>
+            <div class="thumbnail" style="background-image: url('<?php echo $thumb ? $thumb : $noimage; ?>');"></div>
             <div class="article__info">
               <h3 class="title"><?php the_title(); ?><span>New!</span></h3>
               <p class="excerpt">
@@ -619,23 +623,23 @@
           endif;
           wp_reset_postdata();
           ?>
-        <!-- ▼ ページネーション -->
-        <div class="pagination">
-            <?php
-            echo paginate_links(array(
-                'total'     => $wp_query->max_num_pages,
-                'current'   => $paged,
-                'mid_size'  => 1,
-                'prev_text' => '« 前へ',
-                'next_text' => '次へ »',
-                'type'      => 'plain',
-                // 修正箇所：出力の前後にラップして色付け用クラス
-                'before_page_number' => '<span class="modified">',
-                'after_page_number'  => '</span>',
-            ));
-            ?>
-        </div>
-        </div>
+          <!-- ▼ ページネーション -->
+          <div class="pagination">
+              <?php
+              echo paginate_links(array(
+                  'total'     => $wp_query->max_num_pages,
+                  'current'   => $paged,
+                  'mid_size'  => 1,
+                  'prev_text' => '« 前へ',
+                  'next_text' => '次へ »',
+                  'type'      => 'plain',
+                  // 修正箇所：出力の前後にラップして色付け用クラス
+                  'before_page_number' => '<span class="modified">',
+                  'after_page_number'  => '</span>',
+              ));
+              ?>
+          </div>
+        <!-- </div> -->
       </div>
       <?php get_template_part('parts/sidelist_kazokusotokushu'); ?>
     </article>
@@ -706,7 +710,11 @@
           <article>
             <a href="<?php the_permalink(); ?>">
               <div class="flex">
-                <div class="thumbnail" style="background-image: url(<?php echo esc_url(get_field('main_image')); ?>)"></div>
+              <?php
+              $thumb = get_field('main_image');
+              $noimage = get_template_directory_uri() . '/images/noimage.png';
+              ?>
+              <div class="thumbnail" style="background-image: url('<?php echo $thumb ? $thumb : $noimage; ?>');"></div>
                 <div class="info">
                   <?php $pto = get_post_type_object(get_post_type()); ?>
                   <p class="post-type-name <?php echo esc_attr($pto->name); ?>">
@@ -785,7 +793,11 @@
 
               <li>
                 <a href="<?php the_permalink(); ?>">
-                  <div class="thumbnail" style="background-image: url(<?php the_field('main_image'); ?>);"></div>
+                  <?php
+                  $thumb = get_field('main_image');
+                  $noimage = get_template_directory_uri() . '/images/noimage.png';
+                  ?>
+                  <div class="thumbnail" style="background-image: url('<?php echo $thumb ? $thumb : $noimage; ?>');"></div>
                   <div class="info">
                     <span class="info__new">New!</span>
                     <p class="info__title"><?php the_title(); ?></p>
