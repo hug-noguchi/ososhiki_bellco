@@ -27,7 +27,7 @@
               );
               $domestic_post = get_posts($args);
               if($domestic_post) : foreach($domestic_post as $post) : setup_postdata( $post ); ?>
-                <a href="<?php the_permalink(); ?>">家族葬特集</a>
+                <a href="/kazokusotokushu/">家族葬特集</a>
               <?php endforeach;
               endif;
               wp_reset_postdata(); ?>

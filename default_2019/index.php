@@ -109,43 +109,12 @@ wp_reset_postdata(); ?>
       <div class="category-article__infos">
         <h3 class="title">家族葬特集</h3>
         <ul class="category-article__nav">
-          <?php
-          $args = array(
-          'post_type' => 'kazokusotokushu',
-          'posts_per_page' => 1,
-          'tax_query' => array(
-          array(
-          'taxonomy' => 'kazokusotokushu_category',
-          'field' => 'slug',
-          'terms' => '家族葬について'
-          )
-          )
-          );
-          $domestic_post = get_posts($args);
-          if($domestic_post) : foreach($domestic_post as $post) : setup_postdata( $post ); ?>
-          <li><a href="<?php the_permalink(); ?>">家族葬について<img src="<?php echo get_template_directory_uri(); ?>/images/svg/arrow.svg" alt="" width="48" height="7"></a></li>
-          <?php endforeach; ?>
-          <?php endif;
-          wp_reset_postdata(); ?>
-
-          <?php
-          $args = array(
-          'post_type' => 'kazokusotokushu',
-          'posts_per_page' => 1,
-          'tax_query' => array(
-          array(
-          'taxonomy' => 'kazokusotokushu_category',
-          'field' => 'slug',
-          'terms' => '家族葬費用'
-          )
-          )
-          );
-          $domestic_post = get_posts($args);
-          if($domestic_post) : foreach($domestic_post as $post) : setup_postdata( $post ); ?>
-          <li><a href="<?php the_permalink(); ?>">家族葬費用<img src="<?php echo get_template_directory_uri(); ?>/images/svg/arrow.svg" alt="" width="48" height="7"></a></li>
-          <?php endforeach; ?>
-          <?php endif;
-          wp_reset_postdata(); ?>
+          <li>
+            <a href="/kazokusotokushu/" style="letter-spacing: -1px;">
+              家族葬特集一覧を見る
+              <img src="<?php echo get_template_directory_uri(); ?>/images/svg/arrow.svg" alt="" width="48" height="7">
+            </a>
+          </li>
         </ul>
       </div>
     </div>
