@@ -8,11 +8,11 @@
 	<!-- End Google Tag Manager (noscript) -->
     <div class="header__container">
       <header id="header" class="header clear">
-        <div class="header__logo">
+        <h1 class="header__logo">
           <a href="<?php echo home_url(); ?>">
             <img src="<?php echo get_template_directory_uri(); ?>/images/svg/bell_logo02.svg" alt="ベルコロゴ" width="78" height="24">
           </a>
-        </div>
+        </h1>
         <p class="header__catch">さいごの別れについて<br>かんがえよう</p>
         <nav class="header__nav">
           <div class="header__nav--close">
@@ -379,9 +379,6 @@
               </li>
             </ul>
           </nav>
-          <div class="header__sns">
-            <?php get_template_part('parts/sns'); ?>
-          </div>
       </header>
       <div class="mv">
         <div class="mv__humberger">

@@ -2,15 +2,14 @@
 <html lang="ja" class="no-js">
   <?php get_template_part('parts/head'); ?>
   <body <?php body_class(); ?>>
-    <?php get_template_part('parts/sidesns'); ?>
     <div class="header__under">
       <header id="header" class="header clear">
-          <div class="header__logo">
+          <h1 class="header__logo">
             <a href="<?php echo home_url(); ?>">
               <img src="<?php echo get_template_directory_uri(); ?>/images/svg/bell_logo02.svg" alt="ベルコロゴ" width="78" height="24">
               お葬式なるほどチャンネル
             </a>
-          </div>
+          </h1>
           <nav class="header__nav">
             <div class="header__nav--close">
               <img src="<?php echo get_template_directory_uri(); ?>/images/svg/clear.svg" alt="" width="18" height="18">
