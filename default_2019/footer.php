@@ -4,9 +4,6 @@
           <a href="#header"></a>
         </div>
         <div class="wrapper">
-          <div class="footer__sns">
-            <?php get_template_part('parts/sns'); ?>
-          </div>
           <ul class="footer__nav">
               <li><a href="https://www.bellco.co.jp/regist/" target="_blank">特定商取引に基づく表記</a></li>
               <li><a href="https://www.bellco.co.jp/policy/" target="_blank">プライバシーポリシー</a></li>

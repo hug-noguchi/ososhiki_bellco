@@ -38,8 +38,8 @@
   border-right: 2px #fff solid;
   border-top: 2px #fff solid;
   -webkit-transform: rotate(-45deg);
-      -ms-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
   position: absolute;
   top: 19px;
   right: 16px;
@@ -49,19 +49,6 @@
 @media screen and (max-width: 768px) {
   .footer .to-top {
     display: none;
-  }
-}
-
-.footer__sns {
-  display: none;
-}
-
-@media screen and (max-width: 768px) {
-  .footer__sns {
-    display: block;
-  }
-  .footer__sns > a:first-child {
-    margin-right: 25px;
   }
 }
 
