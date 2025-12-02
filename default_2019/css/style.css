@@ -1865,6 +1865,10 @@ category-article
   color: #1e1e1e;
 }
 
+.single-main .sidebar .kazokusotokushu {
+  color: #8c5e5e;
+}
+
 .single-main .sidebar .title {
   font-size: 2.1rem;
   font-weight: 600;
@@ -3019,6 +3023,569 @@ category-article
 
 .bottom-pagination {
   margin-top: 50px;
+}
+
+/*=====================================================
+家族葬特集 記事一覧
+=====================================================*/
+
+.article-list .section-ttl {
+  padding-bottom: 55px;
+}
+.article-list .section-ttl > h1 {
+  font-size: 2.1rem;
+  font-weight: 400;
+  color: #8c5e5e;
+  margin: 0;
+}
+.article-list .kazokusotokushu_list {
+  padding: 50px;
+}
+@media screen and (max-width: 768px) {
+  .article-list .kazokusotokushu_list {
+    padding: 20px 0;
+  }
+  .article-list .section-ttl {
+    padding: 35px;
+  }
+}
+.article-list .sidebar {
+  width: 380px;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  background-color: #f8f8fb;
+  padding: 60px 3vw;
+}
+
+@media screen and (max-width: 1200px) {
+  .article-list .sidebar {
+    width: 30vw;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .article-list .sidebar {
+    display: none;
+  }
+}
+
+.article-list .sidebar .manner {
+  color: #5a477b;
+}
+
+.article-list .sidebar .knowledge {
+  color: #2f4d26;
+}
+
+.article-list .sidebar .after {
+  color: #5b4428;
+}
+
+.article-list .sidebar .ready {
+  color: #3f445e;
+}
+
+.article-list .sidebar .column {
+  color: #1e1e1e;
+}
+
+.article-list .sidebar .title {
+  font-size: 2.1rem;
+  font-weight: 600;
+  color: #8c5e5e;
+  margin-bottom: 25px;
+  margin-top: 0;
+}
+
+.article-list .sidebar__nav {
+  padding: 0;
+}
+
+.article-list .sidebar__nav > li {
+  list-style-type: none;
+  position: relative;
+}
+
+.article-list .sidebar__nav > li > span {
+  font-size: 1.6rem;
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+  font-weight: bold;
+  color: #96969e;
+  display: block;
+  margin-bottom: 25px;
+  cursor: pointer;
+}
+
+.article-list .sidebar__nav > li > span::before {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #96969e;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.article-list .sidebar__nav > li > span::after {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-right: 2px #fff solid;
+  border-top: 2px #fff solid;
+  -webkit-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  transform: rotate(135deg);
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  -webkit-transition: all 0.25s ease-out;
+  -o-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
+}
+
+@media screen and (max-width: 768px) {
+  .article-list .sp-sidelist .sidebar__nav > li > span::before {
+    right: 30vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .article-list .sp-sidelist .sidebar__nav > li > span::before {
+    right: 19vw;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .article-list .sp-sidelist .sidebar__nav > li > span::after {
+    right: calc(19vw + 8px);
+  }
+}
+
+.article-list .sidebar__nav > li > .open::after {
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  top: 9px;
+}
+
+.article-list .sidebar__navchild {
+  padding: 0;
+  display: none;
+}
+
+.article-list .sidebar__navchild > li {
+  list-style-type: none;
+  margin-bottom: 9px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.article-list .sidebar__navchild > li:nth-child(n + 2) > a .info .info__new {
+  display: none;
+}
+
+.article-list .sidebar__navchild > li > a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  text-decoration: none;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+}
+
+.article-list .sidebar__navchild > li > a .thumbnail {
+  width: 30%;
+  height: 50px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.article-list .sidebar__navchild > li > a .info {
+  width: 65%;
+}
+
+.article-list .sidebar__navchild > li > a .info__new {
+  font-weight: 600;
+  color: #c30404;
+  font-size: 1.4rem;
+  position: absolute;
+  top: -20px;
+  left: 35%;
+}
+
+.article-list .sidebar__navchild > li > a .info__title {
+  font-size: 1.6rem;
+  font-weight: 400;
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+  color: #1e1e1e;
+  margin: 0;
+  line-height: 1;
+}
+
+.article-list .article {
+  width: calc(100vw - 130px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-left: 130px;
+}
+
+@media screen and (max-width: 992px) {
+  .article-list .article {
+    margin-left: 0;
+    width: 100vw;
+  }
+}
+
+.article-list .article__container {
+  width: 100%;
+}
+
+.article-list .article__content {
+  padding: 60px 6vw;
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+}
+
+@media screen and (max-width: 992px) {
+  .article-list .article__content {
+    padding: 40px 20px;
+  }
+}
+
+.article-list .article__content table {
+  border-color: #969696;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.article-list .article__content table th,
+.article-list .article__content table td {
+  padding: 2px;
+}
+
+.article-list .article__content img {
+  height: auto;
+}
+
+.article-list .article__content p,
+.article-list .article__content strong {
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+}
+
+.article-list .article__content h5 {
+  font-size: 2.8rem;
+  font-family: "Yu Mincho", "YuMincho", serif;
+  font-weight: 400;
+}
+
+.article-list .article__content h5 strong {
+  font-family: "Yu Mincho", "YuMincho", serif;
+  font-weight: 400;
+}
+
+.article-list .article__content h2 {
+  padding-left: 15px;
+  border-left: 4px solid #4a90e2;
+  line-height: 1.6;
+  margin: 30px 0 20px;
+}
+
+.article-list .article__content h3 {
+  padding-left: 15px;
+  border-left: 4px solid #cccccc;
+  line-height: 1.6;
+  margin: 25px 0 15px;
+}
+
+.article-list .article__info .thumbnail {
+  width: 45%;
+  height: 335px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 1200px) {
+  .article-list .article__info .thumbnail {
+    -webkit-box-ordinal-group: 2;
+    -ms-flex-order: 1;
+    order: 1;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .article-list .article__info .thumbnail {
+    height: 50vw;
+  }
+}
+
+.article-list .article__info--text {
+  width: 55%;
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+  font-size: 1.8rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .article-list .article__info--text {
+    -webkit-box-ordinal-group: 1;
+    -ms-flex-order: 0;
+    order: 0;
+    width: 100%;
+  }
+}
+
+.article-list .article__info--text .contents {
+  padding: 0 20px;
+}
+
+.article-list .article__info--text .contents p {
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+  font-size: 1.6rem;
+}
+
+.article-list .kazokusotokushu_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 50px;
+}
+
+.article-list .kazokusotokushu_item .article__info .title {
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: #1e1e1e;
+  margin-top: 17px;
+  margin-bottom: 28px;
+}
+
+.article-list .kazokusotokushu_item .article__info .title span {
+  font-weight: 600;
+  color: #c30404;
+  font-size: 1.7rem;
+  margin-left: 20px;
+}
+
+.article-list .kazokusotokushu_item .article__info .excerpt {
+  word-wrap: break-word;
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+  font-size: 1.6rem;
+  color: #1e1e1e;
+}
+
+.article-list .kazokusotokushu_item .article__info .read-more {
+  position: absolute;
+  bottom: -26px;
+  right: 0;
+}
+
+.article-list .kazokusotokushu_item .article__info .read-more::before {
+  content: "";
+  display: block;
+  width: 40vw;
+  height: 1px;
+  background-color: #dcdcdc;
+  position: absolute;
+  left: calc(72px - 40vw);
+  top: 28px;
+  -webkit-transition: all 0.25s ease-out;
+  -o-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
+}
+
+.article-list .kazokusotokushu_item .article__info .read-more > a {
+  display: block;
+  color: #1e1e1e;
+  font-size: 1.4rem;
+  border: 1px solid #96969e;
+  padding: 16px 84px;
+  text-decoration: none;
+}
+
+.article-list .kazokusotokushu_item .article__info .read-more::after {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 1px;
+  background-color: #dcdcdc;
+  -webkit-transform: rotate(-150deg);
+  -ms-transform: rotate(-150deg);
+  transform: rotate(-150deg);
+  position: absolute;
+  top: 23px;
+  left: 54px;
+  opacity: 0;
+  -webkit-transition: all 0.25s ease-out;
+  -o-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
+}
+
+@media screen and (max-width: 1200px) {
+  .article-list .kazokusotokushu_item .article__info .read-more {
+    right: 8vw;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .article-list .kazokusotokushu_item {
+    margin-bottom: 145px;
+    flex-wrap: wrap;
+  }
+  .article-list .kazokusotokushu_item .article__info .title {
+    margin-top: 0;
+  }
+  .article-list .kazokusotokushu_item .article__info .read-more {
+    bottom: -235px;
+    right: 10%;
+  }
+  .article-list .kazokusotokushu_item .article__info .read-more::before {
+    width: 70vw;
+    left: calc(72px - 70vw);
+  }
+}
+
+.article-list .article__info .custom-type-name.manner {
+  background-color: #5a477b;
+}
+
+.article-list .article__info .custom-type-name.knowledge {
+  background-color: #2f4d26;
+}
+
+.article-list .article__info .custom-type-name.after {
+  background-color: #5b4428;
+}
+
+.article-list .article__info .custom-type-name.after p {
+  font-size: 1.4rem;
+}
+
+.article-list .article__info .custom-type-name.ready {
+  background-color: #3f445e;
+}
+
+.article-list .article__info .custom-type-name.column {
+  background-color: #1e1e1e;
+}
+
+.article-list .article__info .custom-type-name.kazokusotokushu {
+  background-color: #8c5e5e;
+}
+
+.article-list .article__info .category.manner {
+  color: #5a477b;
+}
+
+.article-list .article__info .category.knowledge {
+  color: #2f4d26;
+}
+
+.article-list .article__info .category.after {
+  color: #5b4428;
+}
+
+.article-list .article__info .category.ready {
+  color: #3f445e;
+}
+
+.article-list .article__info .category.column {
+  color: #1e1e1e;
+}
+
+.article-list .article__info .category.kazokusotokushu {
+  color: #8c5e5e;
+}
+
+.article-list .article__info .custom-type-name {
+  width: 138px;
+  height: 138px;
+  border-radius: 50%;
+  padding: 43px 31px;
+  position: absolute;
+  top: 0;
+  left: calc(45% - 69px);
+  text-align: center;
+}
+
+@media screen and (max-width: 1200px) {
+  .article-list .article__info .custom-type-name {
+    width: 100px;
+    height: 100px;
+    padding: 27px 10px;
+    left: 20px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .article-list .article__info .custom-type-name {
+    top: 18px;
+  }
+}
+
+.article-list .article__info .custom-type-name p {
+  color: #fff;
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+/* リスト */
+.article-list .article .thumbnail {
+  height: 295px;
+  width: 50%;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 2;
+}
+.article-list .article__info {
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 50%;
+  height: 270px;
+  padding: 0 0 55px 35px;
+  position: relative;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+}
+
+@media screen and (max-width: 1200px) {
+  .article-list .article__info {
+    padding: 35px 8vw 55px 4vw;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .article-list .kazokusotokushu_item {
+    flex-wrap: wrap;
+  }
+  .article-list .article .thumbnail {
+    width: 100%;
+    height: 130px;
+    -webkit-box-ordinal-group: 2;
+    order: 1;
+  }
+  .article-list .article__info {
+    width: 100%;
+    -webkit-box-ordinal-group: 1;
+    -ms-flex-order: 0;
+    order: 0;
+    padding: 20px 20px 25px;
+    height: auto;
+  }
 }
 
 /*=====================================================
