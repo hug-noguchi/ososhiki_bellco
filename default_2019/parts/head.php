@@ -29,12 +29,28 @@
     elseif (is_archive()) {
         echo '家族葬特集では、家族葬の費用相場や内訳、直葬・一日葬との違い、流れ、メリット・デメリットなどを分かりやすく解説した記事をまとめています。家族葬を検討中の方が知っておきたい情報を厳選してご紹介します。';
     }
-    elseif (is_single()) {
-        echo $content_summary;
+    elseif (is_single() && get_post_type() === 'post') {
+        echo esc_attr($content_summary);
+    }
+    elseif (is_singular('kazokusotokushu')) {
+        $seo_description = get_post_meta(get_the_ID(), 'seo_description', true);
+        if (!empty($seo_description)) {
+            echo esc_attr($seo_description);
+        } else {
+            echo isset($content_summary) ? esc_attr($content_summary) : '';
+        }
     }
     else {
         bloginfo('description');
     }
+  ?>">
+  <meta name="keywords" content="<?php
+      if (is_singular('kazokusotokushu')) {
+          $seo_keywords = get_post_meta(get_the_ID(), 'seo_keywords', true);
+          if (!empty($seo_keywords)) {
+              echo esc_attr($seo_keywords);
+          }
+      }
   ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/style.css">
   <?php if (is_home()) : ?>
