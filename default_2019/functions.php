@@ -6,7 +6,7 @@
 
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-			管理画面用CSS読み込ませる																							
+			管理画面用CSS読み込ませる
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 function wp_custom_admin_css() {
@@ -35,7 +35,7 @@ function custom_admin_footer() {
 function remove_menus () {
 	remove_menu_page('wpcf7'); //Contact Form 7
 	global $menu;
-	
+
 	unset($menu[2]); // ダッシュボード
 	//unset($menu[4]); // メニューの線1
 	unset($menu[5]); // 投稿
@@ -52,7 +52,7 @@ function remove_menus () {
 	//unset($menu[81]); // カスタムフィールド
 	//unset($menu[90]); // メニューの線3
 	//unset($menu[100]); // Custom Post Types
-	
+
 }
 add_action('admin_menu', 'remove_menus');
 
@@ -63,21 +63,21 @@ function remove_submenus() {
 	print_r($submenu);
 	print "-->";
 	*/
-	
+
 	// 設定
-	
+
 	//print_r($submenu);exit;
 	unset($submenu['edit.php?post_type=contents_top'][15]); // カテゴリ
 	unset($submenu['edit.php?post_type=contents_top'][16]); // カテゴリ
 	unset($submenu['edit.php?post_type=contents_top'][17]); // カテゴリ
 	unset($submenu['edit.php?post_type=contents_top'][18]); // カテゴリ
-	
+
 	/*
 	unset($submenu['edit.php?post_type=works'][15]); // カテゴリ
 	unset($submenu['edit.php?post_type=works'][16]); // タクソノミーオーダー
 	unset($submenu['edit.php?post_type=faq'][15]); // カテゴリ
 	unset($submenu['edit.php?post_type=faq'][16]); // タクソノミーオーダー
-	
+
 	unset($submenu['options-general.php'][41]); // AA PassPro
 	unset($submenu['options-general.php'][43]); // Taxonomy Terms Order
 	*/
@@ -89,7 +89,7 @@ add_action('admin_menu', 'remove_submenus', 102);
 // ダッシュボードウィジェット非表示
 function example_remove_dashboard_widgets() {
 	global $wp_meta_boxes;
-	
+
 	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']); // 現在の状況
 	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']); // 最近のコメント
 	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']); // 被リンク
@@ -219,3 +219,58 @@ function fields_in_feed($content) {
     return $content;
 }
 add_filter('the_content','fields_in_feed');
+
+// カスタム投稿にSEO用カスタムフィールドを追加
+function add_seo_meta_boxes() {
+    add_meta_box(
+        'seo_meta_box',
+        'SEO設定',
+        'seo_meta_box_html',
+        ['kazokusotokushu'],
+        'normal',
+        'high'
+    );
+}
+add_action('add_meta_boxes', 'add_seo_meta_boxes');
+
+function seo_meta_box_html($post) {
+    $seo_title       = get_post_meta($post->ID, 'seo_title', true);
+    $seo_description = get_post_meta($post->ID, 'seo_description', true);
+    $seo_keywords    = get_post_meta($post->ID, 'seo_keywords', true);
+    wp_nonce_field('save_seo_meta', 'seo_meta_nonce');
+    ?>
+
+    <p>
+        <label>タイトル</label><br>
+        <input type="text" name="seo_title" value="<?php echo esc_attr($seo_title); ?>" style="width:100%;">
+    </p>
+
+    <p>
+        <label>ディスクリプション</label><br>
+        <textarea name="seo_description" rows="3" style="width:100%;"><?php echo esc_textarea($seo_description); ?></textarea>
+    </p>
+
+    <p>
+        <label>キーワード（カンマ区切り）</label><br>
+        <input type="text" name="seo_keywords" value="<?php echo esc_attr($seo_keywords); ?>" style="width:100%;">
+    </p>
+
+    <?php
+}
+
+// 保存処理
+function save_seo_meta($post_id) {
+
+    if (!isset($_POST['seo_meta_nonce']) || !wp_verify_nonce($_POST['seo_meta_nonce'], 'save_seo_meta')) {
+        return;
+    }
+
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+
+    update_post_meta($post_id, 'seo_title', sanitize_text_field($_POST['seo_title']));
+    update_post_meta($post_id, 'seo_description', sanitize_textarea_field($_POST['seo_description']));
+    update_post_meta($post_id, 'seo_keywords', sanitize_text_field($_POST['seo_keywords']));
+}
+add_action('save_post', 'save_seo_meta');
