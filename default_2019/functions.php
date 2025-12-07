@@ -144,37 +144,42 @@ add_filter('the_content', 'wps_highlight_results');
 OGPタグ/Twitterカード設定を出力
 *********************/
 function my_meta_ogp() {
+
   if( is_front_page() || is_home() || is_singular() ){
     global $post;
+
+    // ★ 家族葬特集の投稿の場合 → OGP出力しない
+    if ( is_singular('kazokusotokushu') ) {
+      return;
+    }
+
     $ogp_title = '';
     $ogp_descr = '';
     $ogp_url = '';
     $ogp_img = '';
     $insert = '';
 
-    if( is_singular() ) { //記事＆固定ページ
+    if( is_singular() ) {
        setup_postdata($post);
        $ogp_title = $post->post_title;
        $ogp_descr = mb_substr(get_field('contents'), 0, 100);
        $ogp_url = get_permalink();
        wp_reset_postdata();
-    } elseif ( is_front_page() || is_home() ) { //トップページ
+    } elseif ( is_front_page() || is_home() ) {
        $ogp_title = get_bloginfo('name');
        $ogp_descr = get_bloginfo('description');
        $ogp_url = home_url();
     }
 
-    //og:type
     $ogp_type = ( is_front_page() || is_home() ) ? 'website' : 'article';
 
-    //og:image
     if ( is_single() ) {
        $ogp_img = get_field('main_image');
     } else {
      $ogp_img = '';
     }
 
-    //出力するOGPタグをまとめる
+    // ▼ ここ以下が出力対象
     $insert .= '<meta property="og:title" content="'.esc_attr($ogp_title).'" />' . "\n";
     $insert .= '<meta property="og:description" content="'.esc_attr($ogp_descr).'" />' . "\n";
     $insert .= '<meta property="og:type" content="'.$ogp_type.'" />' . "\n";
@@ -187,12 +192,9 @@ function my_meta_ogp() {
 
     echo $insert;
   }
-} //END my_meta_ogp
+}
 
-add_action('wp_head','my_meta_ogp');//headにOGPを出力
-
-
-
+add_action('wp_head','my_meta_ogp');
 
 function custom_feed($vars) {
     if ( isset( $vars['feed'] ) && !isset( $vars['post_type'] ) ) {
@@ -274,3 +276,28 @@ function save_seo_meta($post_id) {
     update_post_meta($post_id, 'seo_keywords', sanitize_text_field($_POST['seo_keywords']));
 }
 add_action('save_post', 'save_seo_meta');
+
+add_filter( 'wp_get_attachment_image_attributes', function( $attr, $attachment ) {
+
+    // 対象：すべての「記事詳細ページ(single)」のみ
+    if ( ! is_singular() ) {
+        return $attr;
+    }
+
+    // 画像が出現する順番を管理
+    static $first_image_loaded = false;
+
+    if ( ! $first_image_loaded ) {
+        // 1枚目は lazy を付けない（即読み込み）
+        unset( $attr['loading'] );
+        $first_image_loaded = true;
+    } else {
+        // 2枚目以降は lazy を付ける
+        $attr['loading'] = 'lazy';
+    }
+
+    return $attr;
+
+}, 10, 2 );
+
+remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );
