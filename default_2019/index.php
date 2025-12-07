@@ -5,47 +5,66 @@
       <h2>最新の記事</h2>
       <p>Latest Articles</p>
     </div>
-<?php
-$posts = get_posts(array(
-  'post_type' => array(
-    'column', 'ready', 'knowledge', 'manner', 'after', 'kazokusotokushu'
-  ),
-  'meta_query' => array(
-    array(
-      'key' => 'featured_article',
-      'compare' => '==',
-      'value' => '1'
-    )
-  ),
-  'posts_per_page' => 1
-));
-foreach( $posts as $post ):
-setup_postdata( $post );
-?>
-    <article class="article">
-      <div class="thumbnail" style="background-image: url(<?php the_field('main_image'); ?>);">
-      </div>
-      <div class="article__info">
-        <p><span class="category <?php echo esc_html(get_post_type_object(get_post_type())->name); ?>
-"><?php echo esc_html(get_post_type_object(get_post_type())->label); ?></span></p>
-        <h3 class="title"><?php the_title(); ?><span>New!</span></h3>
-        <p class="excerpt">
-<?php
-if(mb_strlen(get_field('contents'))>100){
-$text= mb_substr(strip_tags(get_field('contents')), 0, 60);
-echo $text.'…';
-}else{
-echo strip_tags(get_field('contents'));
-}?>
-        </p>
-        <div class="read-more">
-          <a href="<?php the_permalink(); ?>">もっと読む</a>
-        </div>
-      </div>
-    </article>
-<?php
-endforeach;
-wp_reset_postdata(); ?>
+    <?php
+    $posts = get_posts(array(
+      'post_type' => array('column', 'ready', 'knowledge', 'manner', 'after', 'kazokusotokushu'),
+      'meta_query' => array(
+        array(
+          'key'     => 'featured_article',
+          'compare' => '==',
+          'value'   => '1'
+        )
+      ),
+      'posts_per_page' => 1
+    ));
+
+    foreach( $posts as $post ):
+      setup_postdata( $post );
+    ?>
+      <article class="article">
+        <a href="<?php the_permalink(); ?>" class="article__link">
+          <?php
+          $thumb = get_field('main_image');
+          $noimage = get_template_directory_uri() . '/images/noimage.png';
+          ?>
+          <div class="thumbnail">
+            <img src="<?php echo $thumb ? esc_url($thumb) : esc_url($noimage); ?>" alt="<?php the_title(); ?>" class="thumb-img">
+          </div>
+          <div class="article__info">
+            <p>
+              <span class="category <?php echo esc_html(get_post_type_object(get_post_type())->name); ?>">
+                <?php echo esc_html(get_post_type_object(get_post_type())->label); ?>
+              </span>
+            </p>
+
+            <h3 class="title">
+              <?php the_title(); ?><span>New!</span>
+            </h3>
+
+            <p class="excerpt">
+              <?php
+              if ( mb_strlen(get_field('contents')) > 100 ) {
+                $text = mb_substr(strip_tags(get_field('contents')), 0, 60);
+                echo $text.'…';
+              } else {
+                echo strip_tags(get_field('contents'));
+              }
+              ?>
+            </p>
+            <p class="day">
+              <span>記事公開日：<?php the_time('Y.m.d');?>／最終更新日：<?php the_modified_date('Y.m.d') ?></span>
+            </p>
+            <div class="read-more">
+              もっと読む
+            </div>
+          </div>
+        </a>
+      </article>
+    <?php
+    endforeach;
+    wp_reset_postdata();
+    ?>
+
   </section>
   <section id="pickup" class="pickup">
     <div class="wrapper">
@@ -54,48 +73,52 @@ wp_reset_postdata(); ?>
         <p>Featured Articles</p>
       </div>
       <div class="pickup__container">
-<?php
-$posts = get_posts(array(
-  'post_type' => array(
-    'kazokusotokushu'
-  ),
-  'meta_query' => array(
-    array(
-      'key' => 'featured_article',
-      'compare' => '==',
-      'value' => '1'
-    )
-  ),
-  'posts_per_page' => 6
-));
-foreach( $posts as $post ):
-setup_postdata( $post );
-?>
-        <article class="pickup__article">
-          <a href="<?php the_permalink(); ?>">
-            <div class="thumbnail" style="background-image: url(<?php the_field('main_image'); ?>)"></div>
-            <div class="pickup__article--infos">
-              <p class="category <?php echo esc_html(get_post_type_object(get_post_type())->name); ?>
-"><?php echo esc_html(get_post_type_object(get_post_type())->label); ?></p>
-              <h3 class="title"><?php the_title(); ?></h3>
-              <p class="excerpt">
-<?php
-if(mb_strlen(get_field('contents'))>100){
-$text= mb_substr(strip_tags(get_field('contents')), 0, 60);
-echo $text.'…';
-}else{
-echo strip_tags(get_field('contents'));
-}?>
-              </p>
-              <div class="read-more">
-                <span>もっと読む</span>
+        <?php
+        $posts = get_posts(array(
+          'post_type' => array(
+            'kazokusotokushu'
+          ),
+          'meta_query' => array(
+            array(
+              'key' => 'featured_article',
+              'compare' => '==',
+              'value' => '1'
+            )
+          ),
+          'posts_per_page' => 6
+        ));
+        foreach( $posts as $post ):
+        setup_postdata( $post );
+        ?>
+          <article class="pickup__article">
+            <a href="<?php the_permalink(); ?>">
+              <div class="thumbnail">
+                <img src="<?php the_field('main_image'); ?>" alt="<?php the_title(); ?>" class="thumb-img">
               </div>
-            </div>
-          </a>
-        </article>
-<?php
-endforeach;
-wp_reset_postdata(); ?>
+              <div class="pickup__article--infos">
+                <p class="category <?php echo esc_html(get_post_type_object(get_post_type())->name); ?>"><?php echo esc_html(get_post_type_object(get_post_type())->label); ?></p>
+                <h3 class="title"><?php the_title(); ?></h3>
+                <p class="excerpt">
+                  <?php
+                  if(mb_strlen(get_field('contents'))>100){
+                  $text= mb_substr(strip_tags(get_field('contents')), 0, 60);
+                  echo $text.'…';
+                  }else{
+                  echo strip_tags(get_field('contents'));
+                  }?>
+                </p>
+                <p class="day">
+                  <span>記事公開日：<?php the_time('Y.m.d');?>／最終更新日：<?php the_modified_date('Y.m.d') ?></span>
+                </p>
+                <div class="read-more">
+                  <span>もっと読む</span>
+                </div>
+              </div>
+            </a>
+          </article>
+        <?php
+        endforeach;
+        wp_reset_postdata(); ?>
       </div>
     </div>
   </section>
