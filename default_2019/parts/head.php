@@ -33,12 +33,24 @@
         echo esc_attr($content_summary);
     }
     elseif (is_singular('kazokusotokushu')) {
-        $seo_description = get_post_meta(get_the_ID(), 'seo_description', true);
-        if (!empty($seo_description)) {
-            echo esc_attr($seo_description);
-        } else {
-            echo isset($content_summary) ? esc_attr($content_summary) : '';
-        }
+      // まずは専用のSEOディスクリプションがあればそれを全文出す
+      $seo_description = get_post_meta(get_the_ID(), 'seo_description', true);
+
+      if (!empty($seo_description)) {
+          echo esc_attr($seo_description);
+      } else {
+          // なければ contents を全文使う（途中で切らない）
+          $contents = get_field('contents');
+          if (!empty($contents)) {
+              // タグを削除して、改行・余分な空白を1つのスペースにまとめる
+              $contents_plain = strip_tags($contents);
+              $contents_plain = preg_replace('/\s+/u', ' ', $contents_plain);
+              echo esc_attr($contents_plain);
+          } else {
+              // それもなければブログ全体の説明
+              bloginfo('description');
+          }
+      }
     }
     else {
         bloginfo('description');
@@ -79,7 +91,8 @@
       "description": "株式会社ベルコが運営する葬儀情報メディア『お葬式なるほどチャンネル』です。家族葬やお葬式に関する基礎知識やマナー、費用の考え方などをわかりやすくお届けします。"
     }
     </script>
-  <?php elseif (is_archive()) : ?>
+
+    <?php elseif (is_archive()) : ?>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -93,7 +106,7 @@
         },
         {
           "@type": "ListItem",
-          "position": 2",
+          "position": 2,
           "name": "家族葬特集",
           "item": "https://ososhiki.bellco.co.jp/kazokusotokushu/"
         }
@@ -101,6 +114,103 @@
     }
     </script>
 
-  <?php endif; ?>
+    <?php elseif ( is_singular('kazokusotokushu') ) : ?>
+
+    <?php
+    $terms = get_the_terms(get_the_ID(), 'kazokusotokushu_category');
+    $term = ($terms && !is_wp_error($terms)) ? $terms[0] : null;
+
+    $category_name = $term ? $term->name : '';
+    $category_link = $term ? get_term_link($term) : '';
+
+    $headline      = get_the_title();
+    $url           = get_permalink();
+    $datePublished = get_the_date('Y-m-d');
+    $dateModified  = get_the_modified_date('Y-m-d');
+
+    $thumb     = get_field('main_image');
+    $noimage   = get_template_directory_uri() . '/images/noimage.png';
+    $image_url = $thumb ? esc_url($thumb) : esc_url($noimage);
+
+    $seo_description = get_post_meta(get_the_ID(), 'seo_description', true);
+
+    if (!empty($seo_description)) {
+      $description = $seo_description;
+    } else {
+      $contents = get_field('contents');
+      if (!empty($contents)) {
+        $description = preg_replace('/\s+/u', ' ', strip_tags($contents));
+      } else {
+        $description = get_bloginfo('description');
+      }
+    }
+    ?>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "お葬式なるほどチャンネル",
+          "item": "https://ososhiki.bellco.co.jp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "家族葬特集",
+          "item": "https://ososhiki.bellco.co.jp/kazokusotokushu/"
+        }
+        <?php if( $category_name ) : ?>,
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "<?php echo esc_html($category_name); ?>",
+          "item": "<?php echo esc_url($category_link); ?>"
+        }
+        <?php endif; ?>,
+        {
+          "@type": "ListItem",
+          "position": <?php echo $category_name ? 4 : 3; ?>,
+          "name": "<?php echo esc_html($headline); ?>",
+          "item": "<?php echo esc_url($url); ?>"
+        }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "<?php echo esc_url($url); ?>"
+      },
+      "headline": "<?php echo esc_html($headline); ?>",
+      "image": [
+        "<?php echo $image_url; ?>"
+      ],
+      "datePublished": "<?php echo esc_html($datePublished); ?>",
+      "dateModified": "<?php echo esc_html($dateModified); ?>",
+      "author": {
+        "@type": "Organization",
+        "name": "お葬式なるほどチャンネル"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "お葬式なるほどチャンネル",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ososhiki.bellco.co.jp/wp/wp-content/themes/default_2019/images/svg/bell_logo02.svg"
+        }
+      },
+      "description": "<?php echo esc_attr($description); ?>"
+    }
+    </script>
+
+    <?php endif; ?>
   <?php wp_head(); ?>
 </head>
