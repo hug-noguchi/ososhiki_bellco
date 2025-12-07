@@ -1,24 +1,133 @@
 <?php get_header('under'); ?>
+<style>
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 6vw 60px;
+}
+
+.post-nav__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  border: 1px solid #96969e;
+  font-size: 1.6rem;
+  text-decoration: none;
+  color: #1e1e1e;
+  position: relative;
+  transition: 0.2s ease;
+  line-height: 1;
+  gap: 10px;
+}
+
+/* Prev : 左矢印 ↽ */
+.post-nav__prev::before {
+  content: "\21BD"; /* ↽ */
+  font-size: 1.9rem;
+  display: inline-block;
+  margin-right: 6px;
+  line-height: 1;
+}
+
+/* Next : 右矢印 ⇀ */
+.post-nav__next::after {
+  content: "\21C0"; /* ⇀ */
+  font-size: 1.9rem;
+  display: inline-block;
+  margin-left: 6px;
+  line-height: 1;
+}
+
+/* Hover */
+.post-nav__btn:hover {
+  background-color: #8c5e5e;
+  border-color: #8c5e5e;
+  color: #fff;
+}
+
+</style>
 <main class="single-main">
     <?php if (have_posts()): while (have_posts()) : the_post(); ?>
     <article class="article">
         <div class="article__container">
             <div class="article__info">
-                <div class="thumbnail" style="background-image: url(<?php the_field('main_image'); ?>);"></div>
+                <?php
+                $thumb = get_field('main_image');
+                $noimage = get_template_directory_uri() . '/images/noimage.png';
+                ?>
+                <div class="thumbnail">
+                  <img src="<?php echo $thumb ? esc_url($thumb) : esc_url($noimage); ?>" alt="<?php the_title(); ?>" class="thumb-img">
+                </div>
                 <div class="custom-type-name <?php echo esc_html(get_post_type_object(get_post_type())->name); ?>">
                     <p>家族葬<br>特集</p>
                 </div>
                 <div class="article__info--text">
-                    <p class="category <?php echo esc_html(get_post_type_object(get_post_type())->name); ?>"><?php echo esc_html(get_post_type_object(get_post_type())->label); ?></p>
-                    <h1 class="title"><?php the_title(); ?></h1>
-                    <div class="contents">
-                      <?php the_content(); ?>
-                    </div>
+                  <p class="category <?php echo esc_html(get_post_type_object(get_post_type())->name); ?>"><?php echo esc_html(get_post_type_object(get_post_type())->label); ?></p>
+                  <p class="day">
+                    <span class="pc">記事公開日：<?php the_time('Y.m.d');?>／最終更新日：<?php the_modified_date('Y.m.d') ?></span>
+                    <span class="sp">記事公開日：<?php the_time('Y.m.d');?><br>最終更新日：<?php the_modified_date('Y.m.d') ?></span>
+                  </p>
+                  <h1 class="title"><?php the_title(); ?></h1>
+                  <div class="contents">
+                    <?php the_content(); ?>
+                  </div>
                 </div>
             </div>
             <div class="article__content">
                 <?php the_field('contents'); ?>
             </div>
+<?php
+$current_id = get_the_ID();
+
+// 対象タクソノミー
+$terms = get_the_terms( $current_id, 'kazokusotokushu_category' );
+$term_ids = $terms && ! is_wp_error( $terms ) ? wp_list_pluck( $terms, 'term_id' ) : array();
+
+// 記事一覧と同じ「更新日（modified）降順」で取得
+$args = array(
+  'post_type'      => 'kazokusotokushu',
+  'posts_per_page' => -1,
+  'orderby'        => 'modified', // ←ここ重要
+  'order'          => 'DESC',     // ←更新日が新しい順に並べる
+);
+
+if ( $term_ids ) {
+  $args['tax_query'] = array(
+    array(
+      'taxonomy' => 'kazokusotokushu_category',
+      'field'    => 'term_id',
+      'terms'    => $term_ids,
+    ),
+  );
+}
+
+$all_posts = get_posts( $args );
+$ids       = wp_list_pluck( $all_posts, 'ID' );
+$index     = array_search( $current_id, $ids, true);
+
+// Prev = 古い方（リストの次）
+$prev_id = ( $index !== false && isset( $ids[ $index + 1 ] ) ) ? $ids[ $index + 1 ] : null;
+
+// Next = 新しい方（リストの前）
+$next_id = ( $index !== false && $index > 0 && isset( $ids[ $index - 1 ] ) ) ? $ids[ $index - 1 ] : null;
+?>
+
+<nav class="post-nav">
+  <?php if ( $prev_id ) : ?>
+    <a class="post-nav__btn post-nav__prev" href="<?php echo get_permalink( $prev_id ); ?>">
+      Prev
+    </a>
+  <?php endif; ?>
+
+  <?php if ( $next_id ) : ?>
+    <a class="post-nav__btn post-nav__next" href="<?php echo get_permalink( $next_id ); ?>">
+      Next
+    </a>
+  <?php endif; ?>
+</nav>
+
         </div>
         <?php get_template_part('parts/sidelist_kazokusotokushu'); ?>
     </article>
@@ -89,7 +198,13 @@
           <article>
             <a href="<?php the_permalink(); ?>">
               <div class="flex">
-                <div class="thumbnail" style="background-image: url(<?php echo esc_url(get_field('main_image')); ?>)"></div>
+                <?php
+                $thumb = get_field('main_image');
+                $noimage = get_template_directory_uri() . '/images/noimage.png';
+                ?>
+                <div class="thumbnail">
+                  <img src="<?php echo $thumb ? esc_url($thumb) : esc_url($noimage); ?>" alt="<?php the_title(); ?>" class="thumb-img">
+                </div>
                 <div class="info">
                   <?php $pto = get_post_type_object(get_post_type()); ?>
                   <p class="post-type-name <?php echo esc_attr($pto->name); ?>">
