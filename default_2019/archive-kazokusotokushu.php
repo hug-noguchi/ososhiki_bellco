@@ -1,5 +1,11 @@
 <?php get_header('under'); ?>
   <main class="article-list">
+    <nav class="breadcrumb">
+      <ul>
+        <li><a href="<?php echo home_url(); ?>">TOP</a></li>
+        <li><a href="<?php echo get_post_type_archive_link('kazokusotokushu'); ?>">家族葬特集</a></li>
+      </ul>
+    </nav>
     <article class="article">
       <div class="kazokusotokushu_list">
         <div class="section-ttl">
@@ -18,26 +24,33 @@
           $obj = get_post_type_object($post->post_type);
         ?>
         <div class="kazokusotokushu_item">
-          <?php
-          $thumb = get_field('main_image');
-          $noimage = get_template_directory_uri() . '/images/noimage.png';
-          ?>
-          <div class="thumbnail" style="background-image: url('<?php echo $thumb ? $thumb : $noimage; ?>');"></div>
-          <div class="article__info">
-            <h2 class="title"><?php the_title(); ?><span>New!</span></h2>
-            <p class="excerpt">
-              <?php
-              if(mb_strlen(get_field('contents'))>100){
-              $text= mb_substr(strip_tags(get_field('contents')), 0, 60);
-              echo $text.'…';
-              }else{
-              echo strip_tags(get_field('contents'));
-              }?>
-            </p>
-            <div class="read-more">
-              <a href="<?php the_permalink(); ?>">もっと読む</a>
+          <a href="<?php the_permalink(); ?>" class="kazokusotokushu_link">
+            <?php
+            $thumb = get_field('main_image');
+            $noimage = get_template_directory_uri() . '/images/noimage.png';
+            ?>
+            <div class="thumbnail">
+              <img src="<?php echo $thumb ? esc_url($thumb) : esc_url($noimage); ?>" alt="<?php the_title(); ?>" class="thumb-img">
             </div>
-          </div>
+            <div class="article__info">
+              <h2 class="title"><?php the_title(); ?><span>New!</span></h2>
+              <p class="excerpt">
+                <?php
+                if(mb_strlen(get_field('contents'))>100){
+                $text= mb_substr(strip_tags(get_field('contents')), 0, 60);
+                echo $text.'…';
+                }else{
+                echo strip_tags(get_field('contents'));
+                }?>
+              </p>
+              <p class="day">
+                <span>記事公開日：<?php the_time('Y.m.d');?>／最終更新日：<?php the_modified_date('Y.m.d') ?></span>
+              </p>
+              <div class="read-more">
+                もっと読む
+              </div>
+            </div>
+          </a>
         </div>
         <?php endwhile;
         endif;
@@ -49,7 +62,7 @@
             echo paginate_links(array(
               'total'     => $wp_query->max_num_pages,
               'current'   => $paged,
-              'mid_size'  => 1,
+              'mid_size'  => 3,
               'prev_text' => '« 前へ',
               'next_text' => '次へ »',
               'type'      => 'plain',
