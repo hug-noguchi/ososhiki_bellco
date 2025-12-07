@@ -18,6 +18,36 @@
       <script src="<?php echo get_template_directory_uri(); ?>/js/script.js"></script>
 
     <?php wp_footer(); ?>
+    <!-- ファーストビュー以外の画像は loading="lazy"付与 -->
+    <?php if ( is_singular() ) : ?>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
 
+      const imgs = document.querySelectorAll('img');
+
+      imgs.forEach((img) => {
+
+        // ▼ すでにloading指定されている場合は何もしない
+        if (img.hasAttribute('loading') && img.getAttribute('loading') !== 'lazy') return;
+
+        // ▼ 画像がファーストビュー内(viewport内)かどうか判定
+        const rect = img.getBoundingClientRect();
+        const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+
+        if (isInView) {
+          // viewport内にある画像 → eager読み込み
+          img.removeAttribute('loading');
+          img.setAttribute('fetchpriority', 'high'); // LCP改善
+          img.setAttribute('decoding', 'async');
+        } else {
+          // viewport外 → lazy
+          img.setAttribute('loading', 'lazy');
+        }
+
+      });
+
+    });
+    </script>
+    <?php endif; ?>
   </body>
 </html>
