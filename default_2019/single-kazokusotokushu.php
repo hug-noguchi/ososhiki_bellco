@@ -50,6 +50,31 @@
 </style>
 <main class="single-main">
     <?php if (have_posts()): while (have_posts()) : the_post(); ?>
+    <nav class="breadcrumb">
+      <ul>
+        <li><a href="<?php echo home_url(); ?>">TOP</a></li>
+        <li><a href="<?php echo get_post_type_archive_link('kazokusotokushu'); ?>">家族葬特集</a></li>
+
+        <!-- <?php
+        $terms = get_the_terms(get_the_ID(), 'kazokusotokushu_category');
+        if ($terms && !is_wp_error($terms)) :
+          $term = array_shift($terms); // 最初のカテゴリーのみ表示
+        ?>
+          <li><a href="<?php echo get_term_link($term); ?>"><?php echo $term->name; ?></a></li>
+        <?php endif; ?> -->
+
+        <li>
+          <?php
+          $terms = get_the_terms(get_the_ID(), 'kazokusotokushu_category');
+          if ($terms && !is_wp_error($terms)) :
+            $term = array_shift($terms); // 最初のカテゴリーのみ表示
+          ?>
+            <?php echo $term->name; ?>
+          <?php endif; ?>
+          『<?php the_title(); ?>』
+        </li>
+      </ul>
+    </nav>
     <article class="article">
         <div class="article__container">
             <div class="article__info">
