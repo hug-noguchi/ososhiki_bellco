@@ -4,6 +4,17 @@
     <p>Category Articles</p>
   </div>
   <div class="single-category__container">
+    <div class="single-category__block kazokusotokushu">
+      <div class="single-category__block--inner">
+        <h3 class="title">家族葬特集</h3>
+        <ul>
+          <li>
+            <a href="/kazokusotokushu/" style="letter-spacing: -0.8px;">家族葬特集一覧を見る</a>
+            <img src="<?php echo get_template_directory_uri(); ?>/images/svg/arrow.svg" alt="" width="48" height="7">
+          </li>
+        </ul>
+      </div>
+    </div>
     <div class="single-category__block preparation">
       <div class="single-category__block--inner">
           <h3 class="title">お葬式の準備</h3>
@@ -274,17 +285,6 @@
             wp_reset_postdata(); ?>
                     </ul>
                 </div>
-            </div>
-            <div class="single-category__block kazokusotokushu">
-              <div class="single-category__block--inner">
-                <h3 class="title">家族葬特集</h3>
-                <ul>
-                  <li>
-                    <a href="/kazokusotokushu/" style="letter-spacing: -0.8px;">家族葬特集一覧を見る</a>
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/svg/arrow.svg" alt="" width="48" height="7">
-                  </li>
-                </ul>
-              </div>
             </div>
         </div>
     </section>
