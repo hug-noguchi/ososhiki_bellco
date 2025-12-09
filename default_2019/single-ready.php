@@ -1,6 +1,12 @@
 <?php get_header('under'); ?>
 <main class="single-main">
     <?php if (have_posts()): while (have_posts()) : the_post(); ?>
+    <nav class="breadcrumb">
+      <ul>
+        <li><a href="<?php echo home_url(); ?>">TOP</a></li>
+        <li>『<?php the_title(); ?>』</li>
+      </ul>
+    </nav>
     <article class="article">
         <div class="article__container">
             <div class="article__info">
@@ -211,4 +217,3 @@ wp_reset_postdata(); ?>
     <?php get_template_part('parts/categoryarticle'); ?>
 </main>
 <?php get_footer(); ?>
-
