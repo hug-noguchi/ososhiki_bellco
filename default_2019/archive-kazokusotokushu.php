@@ -33,7 +33,20 @@
               <img src="<?php echo $thumb ? esc_url($thumb) : esc_url($noimage); ?>" alt="<?php the_title(); ?>" class="thumb-img">
             </div>
             <div class="article__info">
-              <h2 class="title"><?php the_title(); ?><span>New!</span></h2>
+              <h2 class="title">
+                <?php the_title(); ?>
+                <?php
+                // 記事公開日
+                $post_date = get_the_time('Ymd');
+                // 7日前の日付
+                $seven_days_ago = date('Ymd', strtotime('-7 day'));
+
+                // 記事公開日が7日以内であれば'New!'を表示
+                if ($post_date >= $seven_days_ago) {
+                  echo '<span>New!</span>';
+                }
+                ?>
+              </h2>
               <p class="excerpt">
                 <?php
                 if(mb_strlen(get_field('contents'))>100){
