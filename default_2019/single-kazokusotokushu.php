@@ -6,7 +6,6 @@
   gap: 16px;
   padding: 0 6vw 60px;
 }
-
 .post-nav__btn {
   display: inline-flex;
   align-items: center;
@@ -21,8 +20,6 @@
   line-height: 1;
   gap: 10px;
 }
-
-/* Prev : 左矢印 ↽ */
 .post-nav__prev::before {
   content: "\21BD"; /* ↽ */
   font-size: 1.9rem;
@@ -30,8 +27,6 @@
   margin-right: 6px;
   line-height: 1;
 }
-
-/* Next : 右矢印 ⇀ */
 .post-nav__next::after {
   content: "\21C0"; /* ⇀ */
   font-size: 1.9rem;
@@ -39,14 +34,11 @@
   margin-left: 6px;
   line-height: 1;
 }
-
-/* Hover */
 .post-nav__btn:hover {
   background-color: #8c5e5e;
   border-color: #8c5e5e;
   color: #fff;
 }
-
 </style>
 <main class="single-main">
     <?php if (have_posts()): while (have_posts()) : the_post(); ?>
@@ -95,13 +87,19 @@
                     <span class="sp">記事公開日：<?php the_time('Y.m.d');?><br>最終更新日：<?php the_modified_date('Y.m.d') ?></span>
                   </p>
                   <h1 class="title"><?php the_title(); ?></h1>
+                  <div class="read-time">
+                    <?php echo sprintf('読了予測：約%s分', get_time_to_content_read(get_the_content())); ?>
+                  </div>
                   <div class="contents">
                     <?php the_content(); ?>
                   </div>
                 </div>
             </div>
             <div class="article__content">
-                <?php the_field('contents'); ?>
+              <?php
+                $content = get_field('contents');
+                echo apply_filters('the_content', $content);
+              ?>
             </div>
 <?php
 $current_id = get_the_ID();

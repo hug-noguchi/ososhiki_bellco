@@ -13,8 +13,14 @@
                     <h1 class="title"><?php the_title(); ?></h1>
                 </div>
             </div>
+            <div class="read-time">
+                <?php echo sprintf('読了予測：約%s分', get_time_to_content_read(get_the_content())); ?>
+            </div>
             <div class="article__content">
-                <?php the_field('contents'); ?>
+              <?php
+                $content = get_field('contents');
+                echo apply_filters('the_content', $content);
+              ?>
             </div>
         </div>
         <?php get_template_part('parts/sidelist'); ?>
@@ -126,4 +132,3 @@
     <?php get_template_part('parts/categoryarticle'); ?>
 </main>
 <?php get_footer(); ?>
-
