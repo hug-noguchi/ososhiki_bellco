@@ -301,3 +301,13 @@ add_filter( 'wp_get_attachment_image_attributes', function( $attr, $attachment )
 }, 10, 2 );
 
 remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );
+
+//記事内 読了予測
+function get_time_to_content_read($content){
+$count = mb_strlen(strip_tags($content));
+if ($count == 0) {
+    return 1;
+}
+$minutes = ceil($count / 2000);
+return max(1, $minutes);
+}
