@@ -7,8 +7,7 @@
   })(window,document,'script','dataLayer','GTM-NK2GJXM');</script>
   <!-- End Google Tag Manager -->
   <meta charset="utf-8">
-  <title><?php wp_title(''); ?><?php if(wp_title('', false)) { echo ' :'; } ?> <?php bloginfo('name'); ?></title>
-
+  <title><?php if ( is_front_page() || is_home() ) : ?>家族葬などの費用のお得情報 | <?php bloginfo('name'); ?><?php else : ?><?php wp_title(''); ?><?php if(wp_title('', false)) { echo ' :'; } ?> <?php bloginfo('name'); ?><?php endif; ?></title>
   <link href="//www.google-analytics.com" rel="dns-prefetch">
   <link href="<?php echo get_template_directory_uri(); ?>/images/icons/favicon.ico" rel="shortcut icon">
   <link href="<?php echo get_template_directory_uri(); ?>/images/icons/touch.png" rel="apple-touch-icon-precomposed">
