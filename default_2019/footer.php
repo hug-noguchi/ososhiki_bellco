@@ -1,3 +1,12 @@
+      <div class="fixedBtn" id="fixedBtn">
+        <a href="https://hanairo-kazokusou.jp" target="_blank">
+          <picture>
+            <source srcset="<?php echo get_template_directory_uri(); ?>/images/fixed-btn_pc.png" media="(min-width: 768px)">
+            <img src="<?php echo get_template_directory_uri(); ?>/images/fixed-btn_sp.png" alt="資料請求する" width="210" height="116">
+          </picture>
+        </a>
+      </div>
+
       <!-- footer -->
       <footer id="footer" class="footer" role="contentinfo">
         <div class="to-top">
