@@ -1787,7 +1787,7 @@ category-article
   background-color: #1e1e1e;
   border-radius: 50%;
   position: absolute;
-  top: 140px;
+  top: 0;
   right: 10vw;
   cursor: pointer;
 }
@@ -3931,6 +3931,7 @@ category-article
 =====================================================*/
 .cta {
   margin: 30px auto;
+  text-align: center;
 }
 
 .cta-lead {
@@ -3968,7 +3969,7 @@ category-article
 .fixedBtn {
   position: fixed;
   right: 40px;
-  bottom: 75px;
+  bottom: 35px;
   z-index: 2;
 }
 .fixedBtn a {
