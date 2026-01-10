@@ -311,3 +311,14 @@ if ($count == 0) {
 $minutes = ceil($count / 2000);
 return max(1, $minutes);
 }
+
+// 記事内 CTAボタン
+function btn_cta_func() {
+  return '<div class="cta">
+            <p class="cta-lead"><img src="https://ososhiki.bellco.co.jp/wp/wp-content/uploads/2026/01/cta.png" alt="今なら資料請求で葬儀費用を最大49,000円割引き！" width="385" height="322"></p>
+            <a href="https://hanairo-kazokusou.jp/ad/hanairo/002/all/?utm_source=ownedmedia&amp;utm_medium=naruhodo&amp;utm_campaign=media069&amp;code=002&amp;param=write_lp" target="_blank" class="cta-btn">
+              <img src="https://ososhiki.bellco.co.jp/wp/wp-content/uploads/2026/01/cta_btn.png" alt="資料請求する" width="400" height="80">
+            </a>
+          </div>';
+}
+add_shortcode('btn_cta', 'btn_cta_func');

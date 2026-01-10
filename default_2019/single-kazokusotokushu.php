@@ -95,12 +95,27 @@
                   </div>
                 </div>
             </div>
-            <div class="article__content">
-              <?php
-                $content = get_field('contents');
-                echo apply_filters('the_content', $content);
-              ?>
-            </div>
+<div class="article__content">
+  <?php
+    $content = get_field('contents');
+    $content = do_shortcode($content);
+    $output = apply_filters('the_content', $content);
+    $cta_html = do_shortcode('[btn_cta]');
+
+    if (strpos($output, 'id="toc_container"') !== false) {
+        $output = preg_replace(
+            '/(<div id="toc_container".*?<\/div>)/s',
+            '$1' . $cta_html,
+            $output,
+            1
+        );
+    } else {
+        $output = preg_replace('/<h2.*?>/i', $cta_html . '$0', $output, 1);
+    }
+
+    echo $output;
+  ?>
+</div>
 <?php
 $current_id = get_the_ID();
 
