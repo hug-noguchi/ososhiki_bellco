@@ -1,5 +1,5 @@
       <div class="fixedBtn" id="fixedBtn">
-        <a href="https://hanairo-kazokusou.jp" target="_blank">
+        <a href="https://hanairo-kazokusou.jp/ad/hanairo/002/all/?utm_source=ownedmedia&amp;utm_medium=naruhodo&amp;utm_campaign=media069&amp;code=002&amp;param=write_lp" target="_blank">
           <picture>
             <source srcset="<?php echo get_template_directory_uri(); ?>/images/fixed-btn_pc.png" media="(min-width: 768px)">
             <img src="<?php echo get_template_directory_uri(); ?>/images/fixed-btn_sp.png" alt="資料請求する" width="210" height="116">
